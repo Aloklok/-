@@ -28,5 +28,5 @@ function updateScore(score){
 }
 
 function gameover(){
-$('#gameover').text("游戏已结束，再来一局？")
+$('#gameover').text("游戏结束，再来一局？")
 }

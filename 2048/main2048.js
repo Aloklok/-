@@ -4,7 +4,6 @@
 var board=new Array();
 var score=0;
 var hasConflicted=new Array();
-
 var startx=0;
 var starty=0;
 var endx=0;
@@ -13,6 +12,7 @@ var endy=0;
 $(document).ready(function(){
     prepareForMobile();
     newgame();
+    prepareMobileControl();
 });
 
 function prepareForMobile(){
@@ -160,58 +160,57 @@ $(document).keydown(function(event){
             break;
     }
 });
+function prepareMobileControl(){
+    var gridContainer = document.getElementById("grid-container");
+    gridContainer.addEventListener('touchstart', function (event) {
+        startx = event.touches[0].pageX;
+        starty = event.touches[0].pageY;
+    });
 
 
-document.addEventListener('touchstart',function(event){
-    startx=event.touches[0].pageX;
-    starty=event.touches[0].pageY;
-});
-document.addEventListener('touchmove',function(event){
-    event.preventDefault();
-});
+    gridContainer.addEventListener('touchend', function (event) {
+        endx = event.changedTouches[0].pageX;
+        endy = event.changedTouches[0].pageY;
 
-document.addEventListener('touchend',function(event){
-    endx=event.changedTouches[0].pageX;
-    endy=event.changedTouches[0].pageY;
+        var deltax = endx - startx;
+        var deltay = endy - starty;
 
-    var deltax=endx - startx;
-    var deltay=endy - starty;
+        if (Math.abs(deltax) < 0.3 * documentWidth && Math.abs(deltay) < 0.3 * documentWidth) {
+            return;
+        }
 
-    if(Math.abs(deltax)<0.3*documentWidth && Math.abs(deltay)<0.3*documentWidth){
-        return ;
-    }
-
-    if(Math.abs(deltax)>=Math.abs(deltay)) {
-        if (deltax > 0) {
-            if (moveRight()) {
-                setTimeout("generateOneNumber()", 210);
-                setTimeout("isgameover()", 300);
+        if (Math.abs(deltax) >= Math.abs(deltay)) {
+            if (deltax > 0) {
+                if (moveRight()) {
+                    setTimeout("generateOneNumber()", 210);
+                    setTimeout("isgameover()", 300);
+                }
+            }
+            else {
+                if (moveLeft()) {
+                    setTimeout("generateOneNumber()", 210);
+                    setTimeout("isgameover()", 300);
+                }
             }
         }
         else {
-            if (moveLeft()) {
-                setTimeout("generateOneNumber()", 210);
-                setTimeout("isgameover()", 300);
+            if (deltay > 0) {
+                if (moveDown()) {
+                    setTimeout("generateOneNumber()", 210);
+                    setTimeout("isgameover()", 300);
+                }
             }
-        }
-    }
-    else{
-        if(deltay>0){
-            if(moveDown()){
-                setTimeout("generateOneNumber()",210);
-                setTimeout("isgameover()",300);
+            else {
+                if (moveUp()) {
+                    setTimeout("generateOneNumber()", 210);
+                    setTimeout("isgameover()", 300);
+                }
             }
-        }
-        else{ if(moveUp()){
-            setTimeout("generateOneNumber()",210);
-            setTimeout("isgameover()",300);
-        }
+
         }
 
-    }
-
-});
-
+    });
+}
 
 function isgameover(){
     if(nospace(board)&&nomove(board)){
@@ -242,7 +241,7 @@ function moveLeft(){
                         board[i][j]=0;
                         score+=board[i][k];
                         updateScore(score);
-                        hasConflicted[i][k]==true;
+                        hasConflicted[i][k]=true;
                     }
 
                 }
@@ -273,7 +272,7 @@ function moveRight(){
                         board[i][j]=0;
                         score+=board[i][k];
                         updateScore(score);
-                        hasConflicted[i][k]==true;
+                        hasConflicted[i][k]=true;
                     }
 
                 }
@@ -303,7 +302,7 @@ function moveUp(){
                         board[i][j]=0;
                         score+=board[k][j];
                         updateScore(score);
-                        hasConflicted[k][j]==true;
+                        hasConflicted[k][j]=true;
 
                     }
                 }
@@ -332,7 +331,7 @@ function moveDown(){
                         board[i][j]=0;
                         score+=board[k][j];
                         updateScore(score);
-                        hasConflicted[k][j]==true;
+                        hasConflicted[k][j]=true;
                     }
                 }
             }
