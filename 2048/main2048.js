@@ -15,6 +15,7 @@ $(document).ready(function(){
     prepareMobileControl();
 });
 
+//对静态元素的css设置
 function prepareForMobile(){
     if(documentWidth>500){
         gridContainerWidth=500;
@@ -40,6 +41,7 @@ function newgame(){
     generateOneNumber();
 }
 
+//动态生成每个grid-cell的位置后，初始化score和棋盘格内数字。
 function init(){
     for(var i=0;i<4;i++)
     for(var j=0;j<4;j++){
@@ -61,7 +63,7 @@ updateBoardView();
     $('#gameover').text(" ")
 }
 
-//创建显示并更新Board上的数字。
+//根据board[i][j]的值重新生成视图，玩家每次操作都应调用此函数。
 function updateBoardView(){
     $(".number-cell").remove();
 
@@ -87,6 +89,8 @@ function updateBoardView(){
                 theNumberCell.css('color',getNumberColor(board[i][j]));
                 theNumberCell.text(board[i][j]);
             }
+
+            //玩家每次操作后都初始化board上的每个位置为没有合并数据的记录。
             hasConflicted[i][j]=false;
         }
     $('.number-cell').css('line-height',cellSideLength+'px');
@@ -162,11 +166,17 @@ $(document).keydown(function(event){
 });
 function prepareMobileControl(){
     var gridContainer = document.getElementById("grid-container");
+
     gridContainer.addEventListener('touchstart', function (event) {
         startx = event.touches[0].pageX;
         starty = event.touches[0].pageY;
     });
 
+    //消除手机设备中手势的默认操作
+    gridContainer.addEventListener('touchmove', function (event) {
+    event.preventDefault();
+    }
+    );
 
     gridContainer.addEventListener('touchend', function (event) {
         endx = event.changedTouches[0].pageX;
@@ -175,6 +185,7 @@ function prepareMobileControl(){
         var deltax = endx - startx;
         var deltay = endy - starty;
 
+        //根据手势操作方向，调用相应的move函数。
         if (Math.abs(deltax) < 0.3 * documentWidth && Math.abs(deltay) < 0.3 * documentWidth) {
             return;
         }
@@ -218,10 +229,6 @@ function isgameover(){
     }
 }
 
-
-
-
-
 function moveLeft(){
     if(!canMoveLeft(board)) {
         return false;
@@ -248,7 +255,6 @@ function moveLeft(){
 
             }
         }
-
 setTimeout("updateBoardView()",200);
         return true;
 }
