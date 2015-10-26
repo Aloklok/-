@@ -20,8 +20,13 @@
 2. 另外CSS中定义了个 .clr{} ，但html中没有用到。于是删去。
 
 3. 看到`-webkit-backface-visibility`，不太懂啥叫"定义当元素不面向屏幕时是否可见"。
+<<<<<<< HEAD:CSS3/smooth transition/README.md
 [http://www.w3school.com.cn/tiy/t.asp?f=css3_backface-visibility](http://www.w3school.com.cn/tiy/t.asp?f=css3_backface-visibility)，看了左边链接后觉着它与这个页面关系不大，毕竟它是X轴旋转的，还没看到背面呢。所以删去了。
 
+=======
+http://www.w3school.com.cn/tiy/t.asp?f=css3_backface-visibility
+看了左边链接后发觉它与这个页面关系不大，毕竟它是X轴旋转的，还没看到背面呢。所以删去了。
+>>>>>>> e56717496c2e32fbb45e79844bce03bae0863102:CSS3/实现网页平滑过渡/README.md
 
 
 笔记：
