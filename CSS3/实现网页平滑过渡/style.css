@@ -232,7 +232,6 @@ a{
     -o-transform: translate3d(0,0,0);
     -ms-transform: translate3d(0,0,0);
     transform:translate3d(0,0,0);
-    -webkit-backface-visibility: hidden;
     -webkit-transition: all 0.4s ease-in-out;
     -moz-transition: all 0.4s ease-in-out;
     -o-transition: all 0.4s ease-in-out;
@@ -338,7 +337,6 @@ a{
     top:50%;
     margin-top:-70px;
     text-shadow: 1px 1px 1px rgba(151, 24, 64, 0.2);
-    -webkit-backface-visibility: hidden;
 }
 
 /*设置所有标题动画*/
@@ -364,7 +362,6 @@ a{
     line-height:22px;
     padding:0;
     text-align: center;
-    -webkit-backface-visibility: hidden;
     color:#8b8b8b;
     margin-top:10px;
 }
