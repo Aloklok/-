@@ -1,12 +1,17 @@
-慕课学习网址：http://www.imooc.com/learn/252
 
-显示效果：http://www.alok2333.com/gadgets/css/smooth%20transition/
+## CSS实现网页平滑过渡
+
+### 慕课学习网址：http://www.imooc.com/learn/252
+
+### 显示效果：http://www.alok2333.com/gadgets/css/smooth%20transition/
 
 这个页面有个特别之处，就是纯CSS手工打造，没有js文件，哈哈。
 
 这相当于添加了CSS的工作量，在实际应用或许不这么做，但对CSS3的进一步了解很有帮助。
 
 像我之前很少写CSS，不喜欢写，趁此机再多多琢磨下。。
+
+
 
 老师讲的蛮顺的，但是有的地方觉得有些小问题：
 
@@ -15,7 +20,8 @@
 2. 另外CSS中定义了个 .clr{} ，但html中没有用到。于是删去。
 
 3. 看到`-webkit-backface-visibility`，不太懂啥叫"定义当元素不面向屏幕时是否可见"。
-http://www.w3school.com.cn/tiy/t.asp?f=css3_backface-visibility，看了左边链接后它与这个页面关系不大，毕竟它是X轴旋转的，还没看到背面呢。所以删去了。
+[http://www.w3school.com.cn/tiy/t.asp?f=css3_backface-visibility](http://www.w3school.com.cn/tiy/t.asp?f=css3_backface-visibility)，看了左边链接后觉着它与这个页面关系不大，毕竟它是X轴旋转的，还没看到背面呢。所以删去了。
+
 
 
 笔记：
