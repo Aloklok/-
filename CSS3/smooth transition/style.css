@@ -10,6 +10,18 @@
 }
 
 /*定义点击页面后自动出现的标题的动画效果：下移，同时从透明度增加。*/
+
+@keyframes moveDown{
+    0%{
+        transform:translateY(-30px);
+        opacity:0;
+    }
+    100%{
+        transform:translateY(0px);
+        opacity:1;
+    }
+}
+
 @-webkit-keyframes moveDown{
     0%{
         -webkit-transform:translateY(-30px);
@@ -22,46 +34,48 @@
 }
 @-moz-keyframes moveDown{
     0%{
-        -webkit-transform:translateY(-30px);
+        -moz-transform:translateY(-30px);
         opacity:0;
     }
     100%{
-        -webkit-transform:translateY(0px);
+        -moz-transform:translateY(0px);
         opacity:1;
     }
 }
 @-o-keyframes moveDown{
     0%{
-        -webkit-transform:translateY(-30px);
+        -o-transform:translateY(-30px);
         opacity:0;
     }
     100%{
-        -webkit-transform:translateY(0px);
+        -o-transform:translateY(0px);
         opacity:1;
     }
 }
 @-ms-keyframes moveDown{
     0%{
-        -webkit-transform:translateY(-30px);
+        -ms-transform:translateY(-30px);
         opacity:0;
     }
     100%{
-        -webkit-transform:translateY(0px);
-        opacity:1;
-    }
-}
-@keyframes moveDown{
-    0%{
-        -webkit-transform:translateY(-30px);
-        opacity:0;
-    }
-    100%{
-        -webkit-transform:translateY(0px);
+        -ms-transform:translateY(0px);
         opacity:1;
     }
 }
 
+
 /*定义点击页面后自动出现的段落的动画效果：上移，同时从透明度增加。*/
+@keyframes moveUp{
+    0%{
+        transform:translateY(30px);
+        opacity:0;
+    }
+    100%{
+        transform:translateY(0px);
+        opacity:1;
+    }
+}
+
 @-webkit-keyframes moveUp{
     0%{
         -webkit-transform:translateY(30px);
@@ -74,44 +88,35 @@
 }
 @-moz-keyframes moveUp{
     0%{
-        -webkit-transform:translateY(30px);
+        -moz-transform:translateY(30px);
         opacity:0;
     }
     100%{
-        -webkit-transform:translateY(0px);
+        -moz-transform:translateY(0px);
         opacity:1;
     }
 }
 @-o-keyframes moveUp{
     0%{
-        -webkit-transform:translateY(30px);
+        -o-transform:translateY(30px);
         opacity:0;
     }
     100%{
-        -webkit-transform:translateY(0px);
+        -o-transform:translateY(0px);
         opacity:1;
     }
 }
 @-ms-keyframes moveUp{
     0%{
-        -webkit-transform:translateY(30px);
+        -ms-transform:translateY(30px);
         opacity:0;
     }
     100%{
-        -webkit-transform:translateY(0px);
+        -ms-transform:translateY(0px);
         opacity:1;
     }
 }
-@keyframes moveUp{
-    0%{
-        -webkit-transform:translateY(30px);
-        opacity:0;
-    }
-    100%{
-        -webkit-transform:translateY(0px);
-        opacity:1;
-    }
-}
+
 
 
 
@@ -227,16 +232,18 @@ a{
 .st-scroll{
     left:0;
     top:0;
+    transform:translate3d(0,0,0);
     -webkit-transform: translate3d(0,0,0);
     -moz-transform: translate3d(0,0,0);
     -o-transform: translate3d(0,0,0);
     -ms-transform: translate3d(0,0,0);
-    transform:translate3d(0,0,0);
+
+    transition: all 0.4s ease-in-out;
     -webkit-transition: all 0.4s ease-in-out;
     -moz-transition: all 0.4s ease-in-out;
     -o-transition: all 0.4s ease-in-out;
     -ms-transition: all 0.4s ease-in-out;
-    transition: all 0.4s ease-in-out;
+
 
 }
 
@@ -244,42 +251,47 @@ a{
 
 /*当前链接改变时，移动滚动条，来显示相应页面*/
 #st-control-1:checked ~ .st-scroll{
+    transform: translateY(0%);
     -webkit-transform: translateY(0%);
     -moz-transform: translateY(0%);
     -o-transform: translateY(0%);
     -ms-transform: translateY(0%);
-    transform: translateY(0%);
+
 }
 #st-control-2:checked ~ .st-scroll{
+    transform: translateY(-100%);
     -webkit-transform: translateY(-100%);
     -moz-transform: translateY(-100%);
     -o-transform: translateY(-100%);
     -ms-transform: translateY(-100%);
-    transform: translateY(-100%);
+
 }
 
 #st-control-3:checked ~ .st-scroll{
+    transform: translateY(-200%);
     -webkit-transform: translateY(-200%);
     -moz-transform: translateY(-200%);
     -o-transform: translateY(-200%);
     -ms-transform: translateY(-200%);
-    transform: translateY(-200%);
+
 }
 
 #st-control-4:checked ~ .st-scroll{
+    transform: translateY(-300%);
     -webkit-transform: translateY(-300%);
     -moz-transform: translateY(-300%);
     -o-transform: translateY(-300%);
     -ms-transform: translateY(-300%);
-    transform: translateY(-300%);
+
 }
 
 #st-control-5:checked ~ .st-scroll{
+    transform: translateY(-400%);
     -webkit-transform: translateY(-400%);
     -moz-transform: translateY(-400%);
     -o-transform: translateY(-400%);
     -ms-transform: translateY(-400%);
-    transform: translateY(-400%);
+
 }
 
 /*定义顶部的小图标背景区域样式*/
@@ -291,11 +303,12 @@ a{
     left:50%;
     top:0;
     margin-left:-100px;
+    transform:translateY(-50%) rotate(45deg);
     -webkit-transform:translateY(-50%) rotate(45deg) ;
     -moz-transform:translateY(-50%) rotate(45deg);
     -o-transform:translateY(-50%) rotate(45deg);
     -ms-transform:translateY(-50%) rotate(45deg);
-    transform:translateY(-50%) rotate(45deg);
+
 }
 
 /*定义顶部小图标的样式*/
@@ -345,11 +358,12 @@ a{
 #st-control-3:checked ~ .st-scroll #st-panel-3 h2,
 #st-control-4:checked ~ .st-scroll #st-panel-4 h2,
 #st-control-5:checked ~ .st-scroll #st-panel-5 h2{
--webkit-animation:moveDown 0.6s ease-in-out 0.2s backwards;
+    animation:moveDown 0.6s ease-in-out 0.2s backwards;
+    -webkit-animation:moveDown 0.6s ease-in-out 0.2s backwards;
     -moz-animation:moveDown 0.6s ease-in-out 0.2s backwards;
     -ms-animation:moveDown 0.6s ease-in-out 0.2s backwards;
     -o-animation:moveDown 0.6s ease-in-out 0.2s backwards;
-    animation:moveDown 0.6s ease-in-out 0.2s backwards;
+
 }
 
 /*设置段落样式*/
@@ -371,11 +385,12 @@ a{
 #st-control-3:checked ~ .st-scroll #st-panel-3 p,
 #st-control-4:checked ~ .st-scroll #st-panel-4 p,
 #st-control-5:checked ~ .st-scroll #st-panel-5 p{
+    animation:moveUp 0.6s ease-in-out 0.2s backwards;
     -webkit-animation:moveUp 0.6s ease-in-out 0.2s backwards;
     -moz-animation:moveUp 0.6s ease-in-out 0.2s backwards;
     -ms-animation:moveUp 0.6s ease-in-out 0.2s backwards;
     -o-animation:moveUp 0.6s ease-in-out 0.2s backwards;
-    animation:moveUp 0.6s ease-in-out 0.2s backwards;
+
 }
 
 /*修正第2和第4个链接所示页面的样式*/
