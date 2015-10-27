@@ -3,7 +3,7 @@
 
 ### 慕课学习网址：http://www.imooc.com/learn/252
 
-### 显示效果：http://www.alok2333.com/gadgets/css/smooth%20transition/
+### 显示效果：http://www.alok2333.com/gadgets/css/smooth-transition/
 
 这个页面有个特别之处，就是纯CSS手工打造，没有js文件，哈哈。
 

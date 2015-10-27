@@ -3,7 +3,7 @@
 
 ### 慕课学习网址：http://www.imooc.com/learn/76
 
-### 显示效果：http://www.alok2333.com/gadgets/games/2048/
+### 显示效果：http://www.alok2333.com/gadgets/webapp/2048/
 
 
 第一次写小游戏，觉得挺新鲜好玩的。
