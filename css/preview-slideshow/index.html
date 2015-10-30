@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>预览图和幻灯片</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+<div class="slider">
+    <div class="main" id="template_main">
+        <div class="main-i {{css}}" id="main_{{index}}">
+            <div class="caption">
+                <h1>{{h1}}</h1>
+                <h2>{{h2}}</h2>
+            </div>
+            <img src="imgs/{{index}}.jpg" class="picture">
+        </div>
+        </div>
+    <div class="ctrl" id="template_ctrl">
+        <a class="ctrl-i" id="ctrl_{{index}}" href="javascript:switchSlider({{index}});">
+            <img src="imgs/{{index}}.jpg">
+        </a>
+    </div>
+</div>
+<script src="main.js"></script>
+</body>
+</html>
