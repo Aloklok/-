@@ -9,9 +9,9 @@ var MARGIN_LEFT=Math.round(WINDOW_WIDTH/10);
 var MARGIN_TOP=Math.round(WINDOW_HEIGHT/5);
 var RADIUS=Math.round(WINDOW_WIDTH*4/5/108)-1;
 
-
+//设置endTime为初化始页面后一小时的时间
 var endTime=new Date();
-endTime.setTime(endTime.getTime()+3600*1000)
+endTime.setTime(endTime.getTime()+3600*1000);
 var curShowTimeSeconds=0;
 
 var balls=[];
@@ -30,15 +30,29 @@ window.onload=function(){
 
     curShowTimeSeconds=getCurrentShowTimeSeconds();
 
-    setInterval(function() {
-            update();
-            render(context);
-    },
-        50);
+
+//用requestAnimFrame替换setInterval()
+    window.requestAnimFrame =(function(){
+        return  window.requestAnimationFrame       ||
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame    ||
+            function( callback ){
+                window.setTimeout(callback, 1000 / 40);
+            };
+    })();
+
+    //重复调用
+    (function update_render(){
+        update();
+        render(context);
+        requestAnimFrame(update_render);
+    })();
+
+//初始背景颜色
     document.body.style.backgroundColor = '#CCD4D9';
 };
 
-//计算并返回倒计时的秒数
+//计算并返回倒计时一小时的秒数
 function getCurrentShowTimeSeconds(){
     var curTime=new Date();
     var ret =endTime.getTime()-curTime.getTime();
@@ -46,7 +60,7 @@ function getCurrentShowTimeSeconds(){
     return ret>=0?ret:0;
 }
 
-
+//当本次调用update的时间与上次调用update的时间变量不相等，则添加小球。
 function update(){
     var nextShowTimeSeconds=getCurrentShowTimeSeconds();
 
@@ -67,11 +81,11 @@ function update(){
         }
         if(parseInt(curMinutes/10) != parseInt(nextMinutes/10)){
             addBalls(MARGIN_LEFT+39*(RADIUS+1),MARGIN_TOP,parseInt(curMinutes/10));
-            if(parseInt(nextMinutes/10==4))  document.body.style.backgroundColor = '#F2E0B2';
-            if(parseInt(nextMinutes/10==3))  document.body.style.backgroundColor = '#DBCD8F';
-            if(parseInt(nextMinutes/10==2))  document.body.style.backgroundColor = '#D9886A';
-            if(parseInt(nextMinutes/10==1))  document.body.style.backgroundColor = '#D97059';
-            if(parseInt(nextMinutes/10==0))  document.body.style.backgroundColor = '#D93576';
+            if(parseInt(nextMinutes/10)==4)  document.body.style.backgroundColor = '#F2E0B2';
+            if(parseInt(nextMinutes/10)==3)  document.body.style.backgroundColor = '#DBCD8F';
+            if(parseInt(nextMinutes/10)==2)  document.body.style.backgroundColor = '#D9886A';
+            if(parseInt(nextMinutes/10)==1)  document.body.style.backgroundColor = '#D97059';
+            if(parseInt(nextMinutes/10)==0)  document.body.style.backgroundColor = '#D93576';
         }
 
         if(parseInt(curMinutes%10) != parseInt(nextMinutes%10)){
@@ -91,7 +105,7 @@ function update(){
     updateBalls();
 }
 
-
+//遍历某个数字digit[num]中的二维数组,修改x,y值为其圆心位置。
 function addBalls(x,y,num){
     for(var i=0;i<digit[num].length;i++)
         for(var j=0;j<digit[num][i].length;j++){
@@ -99,9 +113,9 @@ function addBalls(x,y,num){
                 var aBall={
                     x:x+(RADIUS+1)+j*2*(RADIUS+1),
                     y:y+(RADIUS+1)+i*2*(RADIUS+1),
-                    g:2+Math.random(),
-                    vx:Math.pow(-1,Math.ceil(Math.random()*1000))*8,
-                    vy:-5 ,
+                    g:1+Math.random(),
+                    vx:Math.pow(-1,Math.ceil(Math.random()*1000))*7+Math.pow(-1,Math.ceil(Math.random()*1000)),
+                    vy:-5,
                     color:colors[Math.floor(Math.random()*colors.length)]
                 };
                 balls.push(aBall)
@@ -110,7 +124,7 @@ function addBalls(x,y,num){
 }
 
 
-
+//对小球的位置进行更新
 function updateBalls(){
     for(var i=0; i<balls.length;i++){
         balls[i].x+=balls[i].vx;
@@ -122,6 +136,8 @@ function updateBalls(){
             balls[i].vy=-balls[i].vy*0.75;
         }
     }
+
+    //重新排序balls[].从balls[0]到balls[cnt]为处在屏幕中的球，其余为屏幕外的球。
     var cnt=0;
     for (var j=0;j<balls.length;j++)
         if(balls[j].x+RADIUS>0 && balls[j].x-RADIUS<WINDOW_WIDTH){
@@ -135,12 +151,7 @@ function updateBalls(){
 
 
 
-
-
-
-
-
-
+//集合每个数字和小球的绘制操作，每次调用都重新绘制
 function render(cxt){
 
     cxt.clearRect(0,0,WINDOW_WIDTH,WINDOW_HEIGHT);
@@ -163,10 +174,11 @@ function render(cxt){
     renderDigit(MARGIN_LEFT+78*(RADIUS+1),MARGIN_TOP,parseInt(seconds/10),cxt);
     renderDigit(MARGIN_LEFT+93*(RADIUS+1),MARGIN_TOP,parseInt(seconds%10),cxt);
 
+    //绘制小球
     for(var i=0;i<balls.length;i++){
         cxt.fillStyle=balls[i].color;
         cxt.beginPath();
-        cxt.arc(balls[i].x,balls[i].y,RADIUS,0,2*Math.PI,true);
+        cxt.arc(balls[i].x,balls[i].y,RADIUS,0,2*Math.PI,true); //画一个小圆
         cxt.closePath();
         cxt.fill();
     }
@@ -174,6 +186,7 @@ function render(cxt){
 }
 
 
+//绘制数字
 function renderDigit(x,y,num,cxt){
     cxt.fillStyle="rgb(0,102,153)";
 
