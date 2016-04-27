@@ -1,26 +1,13 @@
 
 ## CSS实现网页平滑过渡
 
-### 慕课学习网址：http://www.imooc.com/learn/252
 
 ### 显示效果：http://www.alok2333.com/gadgets/css/smooth-transition/
 
-这个页面有个特别之处，就是纯CSS手工打造，没有js文件，哈哈。
 
-这相当于添加了CSS的工作量，在实际应用或许不这么做，但对CSS3的进一步了解很有帮助。
-
-像我之前很少写CSS，不喜欢写，趁此机再多多琢磨下。。
 
 ---
 
-老师讲的蛮顺的，但是有的地方觉得有些小问题：
-
-1. html中的`<a href="#st-panel-1">`没有用上，或许是为帮助理解，但我觉得反而容易误解为点击后自动会跳转，而且眼花。于是直接改为`<a href="#">`。
-
-2. 另外CSS中定义了个 .clr{} ，但html中没有用到。于是删去。
-
-3. 看到`-webkit-backface-visibility`，不太懂啥叫"定义当元素不面向屏幕时是否可见"。
-[http://www.w3school.com.cn/tiy/t.asp?f=css3_backface-visibility](http://www.w3school.com.cn/tiy/t.asp?f=css3_backface-visibility)，看了左边链接后觉着它与这个页面关系不大，毕竟它是X轴旋转的，还没看到背面呢。所以删去了。
 
 ---
 

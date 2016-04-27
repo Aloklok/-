@@ -1,11 +1,10 @@
 
 ## CANVAS实现酷炫倒计时效果
 
-### 慕课学习网址：http://www.imooc.com/learn/133
 
 ### 显示效果：http://www.alok2333.com/gadgets/canvas/countdown
 
-按照老师的教程逐步做下来，步骤大致如下：
+步骤大致如下：
 
 1. 对数组内容进行样式设置，进而整体布局,绘制数字。
 绘制圆的canvas函数  context.arc(圆心x位置,圆心y位置,半径,起始弧度位置,终点弧度位置);
