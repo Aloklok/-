@@ -3,12 +3,11 @@
 
 
 
-### 显示效果：http://passionate.herokuapp.com
 
 
 
 ---
 
 
-![http://7xn7zs.com1.z0.glb.clouddn.com/gadgets/music-visualization.PNG]
+[http://7xn7zs.com1.z0.glb.clouddn.com/gadgets/music-visualization.PNG]
  
